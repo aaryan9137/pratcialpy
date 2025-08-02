@@ -100,7 +100,8 @@ print("shape:",arr.shape)
 print("dimensions:",arr.ndim)
 print("size:",arr.size)
 print("array:\n",arr)
-#5.a)w.a.function to check th input value is armstong & also write the function for palindrome
+#5.a)w.a.function to check th input value is armstong & also write the function for palindrome a palindrome number")
+
 def armnum(num):
     sum=0
     temp=num 
@@ -109,13 +110,13 @@ def armnum(num):
         sum+=digit**3
         temp//=10
         if num==sum:
-            print(num,"is an armstrong number:")
+            print(num,"is an armstrong number")
         else:
             print(num,"is a not armstrong number")
     def palnum(num):
         sum=0
         temp=num
-        while num!=
+        while num!=0:
             rem =num%10
             sum=rem+sum*10
             num=num//10
@@ -124,6 +125,11 @@ def armnum(num):
             else:
                 print(temp,"is not a palindrome number")
                 
-            num=int(input("enter any no:
+            num=int(input("enter any no:"))
+            armnum(num)
+            palnum(num)
+        
+               
 
         
+
