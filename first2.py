@@ -128,8 +128,21 @@ def armnum(num):
             num=int(input("enter any no:"))
             armnum(num)
             palnum(num)
-        
+#b.w.a recursive function to print the factorial for a given number.
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+# Example usage:
+number = int(input("Enter a number: "))
+result = factorial(number)
+print(f"Factorial of {number} is {result}")     
+#(c).W. a lambda function that checks whether a given string starts w specific character.
+
                
 
         
+
 
