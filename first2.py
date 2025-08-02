@@ -36,7 +36,70 @@ while num>0:
     num=num//10
     print("sum of digit is:",sum_digits)
 #3(a)w.a.p to perform basic operation,indexing & slicing on arrays
+import numpy as np
 
+arr=np.array([10,20,30,40,50])
+print("original Array:",arr)
+print("Array +5:",arr+5)
+print(" Array*2:",arr*2)
+print("sum od all element:",arr.sum())
+
+print("first element:",arr[0])
+print("last element:",arr[-1])
+
+#slicing
+print("element from index 1 to 3:",arr[1:4])
+print("element from index start to index 2:",arr[:3])
+print("element from index 2 to end:",arr[2:])
+
+#3b
+arr=np.array([5,10,15,20,25])
+print("original Array:",arr)
+
+#mathemathicl function
+print("sum of elements:",np.sum(arr))
+print("mean (average):",np.mean(arr))
+print("max value:",np.max(arr))
+print("minimum value:",np.min(arr))
+print("square root of each element:",np.sqrt(arr))
+print("stander deviation:",np.std(arr))
+print("product of all elements:",np.prod(arr))
+
+#3c
+arr=np.array([10,20,30,40])
+
+alias_arr=arr
+copy_arr=arr.copy()
+
+arr[0]=100
+
+print("original Array (after change):",arr)
+print("Aliased Aray (after change):",arr)
+print("copied Array(no change):",copy_arr)
+
+#4a
+arr=np.array([ [10,20,30],[40,50,60],[70,80,90]])
+#basic indexing
+print("element at(1,2):",arr[1,2])
+#slicing 
+print("sliced (col 1):",arr[:1])
+
+#advanced indexing
+rows=[0,2]
+cols=[1,2]
+print("advance indexing(0,1) & (2,2):",arr[rows,cols])
+
+print("element >50 :",arr[arr>50])
+
+#4.b
+#create a2d array
+arr=np.array([[1,2,3],[4,5,6]])
+#array attributes
+print("array:\n",arr)
+print("shape:",arr.shape)
+print("dimensions:",arr.ndim)
+print("size:",arr.size)
+print("array:\n",arr)
 #5.a)w.a.function to check th input value is armstong & also write the function for palindrome
 def armnum(num):
     sum=0
@@ -62,4 +125,5 @@ def armnum(num):
                 print(temp,"is not a palindrome number")
                 
             num=int(input("enter any no:
+
         
