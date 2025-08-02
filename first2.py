@@ -156,9 +156,25 @@ word_count = len(text.split())
 # Output
 print("Characters (no spaces):", char_count)
 print("Words:", word_count)
+#8(a). Write a program to accept and pass radius to a function that returns are: and circumference (using tuple).
+import math
+#Function to calculate area and circumference
+def circle_details(r):
+    area= math.pi*r*r
+    circ=2*math.pi*r
+    return (area, circ) # Returning as tuple
+
+#Accept radius from user
+radius= float(input("Enter radius: "))
+# Call function
+result = circle_details(radius)
+# Display results
+print("Area:", result[0])
+print("Circumference:", result[1])
                
 
         
+
 
 
 
