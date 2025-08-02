@@ -140,9 +140,25 @@ number = int(input("Enter a number: "))
 result = factorial(number)
 print(f"Factorial of {number} is {result}")     
 #(c).W. a lambda function that checks whether a given string starts w specific character.
+ starts_with = lambda s, ch: s.startswith(ch)
+# Example usage
+text = input("Enter a string: ")
+char = input("Enter a character: ")
+print("Starts with", char + ":", starts_with(text, char))
+#(6).Write a program to compute number of characters and words in a string.
 
+# Input string
+text = input("Enter a string: ")
+# Count characters (excluding spaces)
+char_count = len(text.replace("", ""))
+# Count words
+word_count = len(text.split())
+# Output
+print("Characters (no spaces):", char_count)
+print("Words:", word_count)
                
 
         
+
 
 
