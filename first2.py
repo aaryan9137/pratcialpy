@@ -237,9 +237,10 @@ else:
     print("Minimum number:", minimum)
     print("Average:", average)
 
-               
-
+https://drive.google.com/file/d/1qpZLI5zJJxKTbHrFD7eR6FMEBml5ATQo/view?usp=drivesdk            
+https://drive.google.com/file/d/1Ve8Eb90_9aH4fdkgICMnbH9NnSmLPzQ7/view?usp=drivesdk
         
+
 
 
 
