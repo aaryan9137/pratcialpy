@@ -1,0 +1,278 @@
+
+
+
+
+
+Q7)Prefix to Postfix
+Code:
+def is_operator(c):
+    return c in "+-*/^"
+
+def prefix_to_postfix(expression):
+    stack = []
+    for symbol in reversed(expression):
+        if is_operator(symbol):
+            op1 = stack.pop()
+            op2 = stack.pop()
+            stack.append(op1 + op2 + symbol)
+        else:
+            stack.append(symbol)
+    return stack[-1]
+
+# Example usage
+prefix_expr = "*+AB-CD"
+postfix_expr = prefix_to_postfix(prefix_expr)
+print("Prefix Expression :", prefix_expr)
+print("Postfix Expression:", postfix_expr)
+
+
+Q8)Infix to Postfix
+Code:
+def precedence(op):
+    if op in ('+', '-'):
+        return 1
+    if op in ('*', '/'):
+        return 2
+    if op == '^':
+        return 3
+    return 0
+
+def infix_to_postfix(expr):
+    stack = []
+    output = ''
+    for char in expr:
+        if char.isalnum():
+            output += char
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                output += stack.pop()
+            stack.pop()
+        else:
+            while stack and precedence(char) <= precedence(stack[-1]):
+                output += stack.pop()
+            stack.append(char)
+    while stack:
+        output += stack.pop()
+    return output
+
+expr = "A*(B+C)/D"
+print("Postfix:", infix_to_postfix(expr))
+Q9)Queue
+Code:
+class Queue:
+    def __init__(self, size): 
+        self.size = size 
+        self.queue = [None] * size  
+        self.front = -1 
+        self.rear = -1 
+
+   def is_empty(self):
+        return self.front == -1   
+                          
+   def is_full(self):
+        return self.rear == self.size – 1 
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue is full. Cannot enqueue.")
+            return
+        if self.is_empty():
+            self.front = 0
+       self.rear += 1
+      self.queue[self.rear] = item
+      print(f"Enqueued: {item}") 
+        if self.is_empty():.
+            print("Queue is empty. Cannot dequeue.") 
+            return None 
+        removed_item = self.queue[self.front] 
+        print(f"Dequeued: {removed_item}")
+        if self.front == self.rear: 
+            # Queue becomes empty
+            self.front = self.rear = -1 
+        else:
+            self.front += 1 
+        return removed_item
+
+    def peek(self):
+    if self.is_empty():
+        print("Queue is empty.")
+        return None
+    return self.queue[self.front]
+
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty.")
+        else:
+          print("Queue contents:", self.queue[self.front:self.rear + 1])
+    if __name__ == "__main__":
+    q = Queue(5)              
+    q.enqueue(10)             
+    q.enqueue(20)             
+    q.enqueue(30)             
+    q.display()               
+    q.dequeue()             
+    q.display()               
+    print("Front item:", q.peek())  
+
+
+
+
+
+Q10)Binary Search Tree
+Code:
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = self.right = None
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, val):
+        def _insert(node, val):
+            if not node: return Node(val)
+            if val < node.val:
+                node.left = _insert(node.left, val)
+            elif val > node.val:
+                node.right = _insert(node.right, val)
+            return node
+        self.root = _insert(self.root, val)
+
+    def search(self, val):
+        def _search(node, val):
+            if not node: return False
+            if val == node.val: return True
+            return _search(node.left, val) if val < node.val else _search(node.right, val)
+        return _search(self.root, val)
+
+    def inorder(self):
+        def _inorder(node):
+            if node:
+                _inorder(node.left)
+                print(node.val, end=' ')
+                _inorder(node.right)
+        _inorder(self.root)
+        print()
+
+# Example usage
+bst = BST()
+for val in [40, 20, 60, 10, 30, 50, 70]:
+    bst.insert(val)
+
+print("Inorder Traversal:")
+bst.inorder()
+
+print("Search 30:", "Found" if bst.search(30) else "Not Found")
+
+Q11)Tree Traversal
+Code
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def preorder(root):
+    if root:
+        print(root.val, end=' ')
+        preorder(root.left)
+        preorder(root.right)
+
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val, end=' ')
+        inorder(root.right)
+
+def postorder(root):
+    if root:
+        postorder(root.left)
+        postorder(root.right)
+        print(root.val, end=' ')
+
+# Example usage:
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+
+print("Preorder traversal:")
+preorder(root)
+print("\nInorder traversal:")
+inorder(root)
+print("\nPostorder traversal:")
+postorder(root)
+
+Q12)Bubble Sort Algorithm
+Code:
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+# Example usage
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(arr)
+print("Sorted array:", arr)
+
+Q13)Insertion Sort Algorithm
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6]
+print("Original array:", arr)
+
+insertion_sort(arr)
+
+print("Sorted array:", arr)
+
+Q14)Linear Search Algorithm
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6]
+print("Original array:", arr)
+
+insertion_sort(arr)
+
+print("Sorted array:", arr)
+
+Q15)Binary Seacrh Algorithm
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+arr = [2, 3, 4, 10, 40]
+target = 10
+
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Element {target} found at index {result}")
+else:
+    print(f"Element {target} not found in the array")
+
