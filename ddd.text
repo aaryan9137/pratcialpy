@@ -1,34 +1,30 @@
-        
+#1.a insert an element at a specific position in an array 
+from array import array
+arr=array('i',[10,20,30,40,50])
+elem=int(input("enter element to insert:"))
+pos=int(input("enter position(0-based index):"))
+arr.insert(pos,elem)
+print("Array adt insertion :",arr.tolist())      
         
 1.b) Delete an element from a specific position in an array.
 from array import array
-
 #Create an integer array
-
 arr= array('I', [10, 20, 30, 40, 50])
 # Input position to delete
-
 pos = int(input("Enter position to delete (0-based index): "))
-
 # Check if position is valid
-
 if 0 <= pos < len(arr):
     arr.pop(pos) # Remove element at position
     print("Array after deletion:", arr.tolist()) 
 else:
         print("Invalid position!")
 
-1.cSearch for an element in an array (linear search).
+1.c)Search for an element in an array (linear search).
 from array import array
-
 #Create an array
-
 arr = array('i', [15, 25, 35, 45, 55])
-
 # Input element to search
-
 key=int(input("Enter element to search: "))
-
 # Linear search
 found = False
 for i in range(len(arr)):
