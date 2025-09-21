@@ -34,7 +34,23 @@ for i in range(len(arr)):
         break
         if not found:
             print("Element not found")
+#2.a create a singly linked list.
 
+head = { 'data':10, 'next': None }
+Second = {'data': 20, 'next': None }
+third = {'data': 30 ,'next': None }
+head ['next'] = Second
+
+Second ['next'] = third
+temp= head
+
+print("Linked List!", end = " ")
+
+while temp is not None:
+    print (temp['data'], end="=>")
+    temp = temp ['next']
+    print("None")
+    
 #2.b)Insert a Note at the beginning end and at the given position in a linked list
 # Node class
 class Node:
