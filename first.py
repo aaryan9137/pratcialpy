@@ -241,7 +241,496 @@ else:
 https://drive.google.com/file/d/1qpZLI5zJJxKTbHrFD7eR6FMEBml5ATQo/view?usp=drivesdk            
 https://drive.google.com/file/d/1Ve8Eb90_9aH4fdkgICMnbH9NnSmLPzQ7/view?usp=drivesdk
 
-###########ddddddddddddddddd###########################        
+###########ddddddddddddddddd###########################  
+
+
+#1.a insert an element at a specific position in an array 
+from array import array
+arr=array('i',[10,20,30,40,50])
+elem=int(input("enter element to insert:"))
+pos=int(input("enter position(0-based index):"))
+arr.insert(pos,elem)
+print("Array adt insertion :",arr.tolist())      
+        
+1.b) Delete an element from a specific position in an array.
+from array import array
+#Create an integer array
+arr= array('I', [10, 20, 30, 40, 50])
+# Input position to delete
+pos = int(input("Enter position to delete (0-based index): "))
+# Check if position is valid
+if 0 <= pos < len(arr):
+    arr.pop(pos) # Remove element at position
+    print("Array after deletion:", arr.tolist()) 
+else:
+        print("Invalid position!")
+
+1.c)Search for an element in an array (linear search).
+from array import array
+#Create an array
+arr = array('i', [15, 25, 35, 45, 55])
+# Input element to search
+key=int(input("Enter element to search: "))
+# Linear search
+found = False
+for i in range(len(arr)):
+    if arr[i] == key:
+        print(f"Element found at position (i)")
+        found = True
+        break
+        if not found:
+            print("Element not found")
+#2.a create a singly linked list.
+
+head = { 'data':10, 'next': None }
+Second = {'data': 20, 'next': None }
+third = {'data': 30 ,'next': None }
+head ['next'] = Second
+
+Second ['next'] = third
+temp= head
+
+print("Linked List!", end = " ")
+
+while temp is not None:
+    print (temp['data'], end="=>")
+    temp = temp ['next']
+    print("None")
+    
+#2.b)Insert a Note at the beginning end and at the given position in a linked list
+# Node class
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# Linked List class
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Function to print linked list
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    # Insert at beginning
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Insert at end
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:  # if list is empty
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    # Insert at given position (1-based index)
+    def insert_at_position(self, data, position):
+        if position <= 0:
+            print("Invalid Position!")
+            return
+
+        new_node = Node(data)
+
+        # Insert at beginning
+        if position == 1:
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        # Traverse to position
+        current = self.head
+        for i in range(position - 2):
+            if current is None:
+                print("Position out of range!")
+                return
+            current = current.next
+
+        if current is None:
+            print("Position out of range!")
+            return
+
+        new_node.next = current.next
+        current.next = new_node
+
+
+# ------------------------------
+# Example usage
+ll = LinkedList()
+
+ll.insert_at_beginning(10)   # 10
+ll.insert_at_end(20)         # 10 -> 20
+ll.insert_at_end(30)         # 10 -> 20 -> 30
+ll.insert_at_position(15, 2) # 10 -> 15 -> 20 -> 30
+ll.insert_at_position(5, 1)  # 5 -> 10 -> 15 -> 20 -> 30
+ll.insert_at_position(40, 6) # 5 -> 10 -> 15 -> 20 -> 30 -> 40
+
+ll.display()
+
+#2.c)Delete a note from a given position in linkef list
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Function to insert node at end
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        temp.next = new_node
+
+    # Function to delete node at a given position
+    def delete_at_position(self, position):
+        if self.head is None:  # empty list
+            return
+
+        temp = self.head
+
+        # If head needs to be removed
+        if position == 0:
+            self.head = temp.next
+            temp = None
+            return
+
+        # Find the previous node of the node to be deleted
+        for i in range(position - 1):
+            if temp is None or temp.next is None:
+                return  # position is greater than number of nodes
+            temp = temp.next
+
+        # Node to be deleted is temp.next
+        node_to_delete = temp.next
+        if node_to_delete is None:
+            return
+
+        # Unlink the node from linked list
+        temp.next = node_to_delete.next
+        node_to_delete = None
+
+    # Function to print linked list
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("None")
+
+
+# Example Usage
+ll = LinkedList()
+ll.append(10)
+ll.append(20)
+ll.append(30)
+ll.append(40)
+
+print("Original List:")
+ll.display()
+
+ll.delete_at_position(2)  # delete node at position 2 (30)
+print("After Deleting at Position 2:")
+ll.display()
+#output:
+Original List:
+10 -> 20 -> 30 -> 40 -> None
+After Deleting at Position 2:
+10 -> 20 -> 40 -> None
+
+
+Q7)Prefix to Postfix
+Code:
+def is_operator(c):
+    return c in "+-*/^"
+
+def prefix_to_postfix(expression):
+    stack = []
+    for symbol in reversed(expression):
+        if is_operator(symbol):
+            op1 = stack.pop()
+            op2 = stack.pop()
+            stack.append(op1 + op2 + symbol)
+        else:
+            stack.append(symbol)
+    return stack[-1]
+
+# Example usage
+prefix_expr = "*+AB-CD"
+postfix_expr = prefix_to_postfix(prefix_expr)
+print("Prefix Expression :", prefix_expr)
+print("Postfix Expression:", postfix_expr)
+
+
+Q8)Infix to Postfix
+Code:
+def precedence(op):
+    if op in ('+', '-'):
+        return 1
+    if op in ('*', '/'):
+        return 2
+    if op == '^':
+        return 3
+    return 0
+
+def infix_to_postfix(expr):
+    stack = []
+    output = ''
+    for char in expr:
+        if char.isalnum():
+            output += char
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                output += stack.pop()
+            stack.pop()
+        else:
+            while stack and precedence(char) <= precedence(stack[-1]):
+                output += stack.pop()
+            stack.append(char)
+    while stack:
+        output += stack.pop()
+    return output
+
+expr = "A*(B+C)/D"
+print("Postfix:", infix_to_postfix(expr))
+Q9)Queue
+Code:
+class Queue:
+    def __init__(self, size): 
+        self.size = size 
+        self.queue = [None] * size  
+        self.front = -1 
+        self.rear = -1 
+
+   def is_empty(self):
+        return self.front == -1   
+                          
+   def is_full(self):
+        return self.rear == self.size – 1 
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue is full. Cannot enqueue.")
+            return
+        if self.is_empty():
+            self.front = 0
+       self.rear += 1
+      self.queue[self.rear] = item
+      print(f"Enqueued: {item}") 
+        if self.is_empty():.
+            print("Queue is empty. Cannot dequeue.") 
+            return None 
+        removed_item = self.queue[self.front] 
+        print(f"Dequeued: {removed_item}")
+        if self.front == self.rear: 
+            # Queue becomes empty
+            self.front = self.rear = -1 
+        else:
+            self.front += 1 
+        return removed_item
+
+    def peek(self):
+    if self.is_empty():
+        print("Queue is empty.")
+        return None
+    return self.queue[self.front]
+
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty.")
+        else:
+          print("Queue contents:", self.queue[self.front:self.rear + 1])
+    if __name__ == "__main__":
+    q = Queue(5)              
+    q.enqueue(10)             
+    q.enqueue(20)             
+    q.enqueue(30)             
+    q.display()               
+    q.dequeue()             
+    q.display()               
+    print("Front item:", q.peek())  
+
+
+
+
+
+Q10)Binary Search Tree
+Code:
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = self.right = None
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, val):
+        def _insert(node, val):
+            if not node: return Node(val)
+            if val < node.val:
+                node.left = _insert(node.left, val)
+            elif val > node.val:
+                node.right = _insert(node.right, val)
+            return node
+        self.root = _insert(self.root, val)
+
+    def search(self, val):
+        def _search(node, val):
+            if not node: return False
+            if val == node.val: return True
+            return _search(node.left, val) if val < node.val else _search(node.right, val)
+        return _search(self.root, val)
+
+    def inorder(self):
+        def _inorder(node):
+            if node:
+                _inorder(node.left)
+                print(node.val, end=' ')
+                _inorder(node.right)
+        _inorder(self.root)
+        print()
+
+# Example usage
+bst = BST()
+for val in [40, 20, 60, 10, 30, 50, 70]:
+    bst.insert(val)
+
+print("Inorder Traversal:")
+bst.inorder()
+
+print("Search 30:", "Found" if bst.search(30) else "Not Found")
+
+Q11)Tree Traversal
+Code
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def preorder(root):
+    if root:
+        print(root.val, end=' ')
+        preorder(root.left)
+        preorder(root.right)
+
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val, end=' ')
+        inorder(root.right)
+
+def postorder(root):
+    if root:
+        postorder(root.left)
+        postorder(root.right)
+        print(root.val, end=' ')
+
+# Example usage:
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+
+print("Preorder traversal:")
+preorder(root)
+print("\nInorder traversal:")
+inorder(root)
+print("\nPostorder traversal:")
+postorder(root)
+
+Q12)Bubble Sort Algorithm
+Code:
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+# Example usage
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(arr)
+print("Sorted array:", arr)
+
+Q13)Insertion Sort Algorithm
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6]
+print("Original array:", arr)
+
+insertion_sort(arr)
+
+print("Sorted array:", arr)
+
+Q14)Linear Search Algorithm
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6]
+print("Original array:", arr)
+
+insertion_sort(arr)
+
+print("Sorted array:", arr)
+
+Q15)Binary Seacrh Algorithm
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+arr = [2, 3, 4, 10, 40]
+target = 10
+
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Element {target} found at index {result}")
+else:
+    print(f"Element {target} not found in the array")
+
+
 
 
 
